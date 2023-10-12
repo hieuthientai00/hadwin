@@ -1,0 +1,80 @@
+name: hadwin
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  provider: ^6.0.5
+  fluentui_system_icons: ^1.1.218
+  http: ^1.1.0
+  fade_shimmer: ^2.2.0
+  # qr_code_scanner: ^0.6.1
+  scrollable_positioned_list: ^0.3.8
+  google_fonts: ^6.1.0
+  lottie: ^2.6.0
+  socket_io_client: ^2.0.3+1
+  grouped_list: ^5.1.2
+  # concentric_transition: ^1.0.1+1
+  concentric_transition: ^1.0.3
+  dotted_line: ^3.2.2
+  # qr_flutter: ^4.0.0
+  url_launcher: ^6.1.14
+  google_nav_bar: ^5.0.6
+  path_provider: ^2.1.1
+  markdown_widget: ^2.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_driver:
+    sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.3.3
+
+flutter_native_splash:
+  color: "#2f73b9"
+  image: "assets/images/hadwin_system/hadwin-splash-screen-logo.png"
+  android: true
+  ios: true
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/hadwin_system/hadwin-logo.png"
+  adaptive_icon_background: "#1546A0"
+  # foreground color is set to #1F5595
+  adaptive_icon_foreground: "assets/images/hadwin_system/hadwin-adaptive-logo.png"
+  remove_alpha_ios: true
+
+  flutter_lints: ^1.0.4
+
+flutter:
+
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/
+    - assets/images/hadwin_system/
+    - assets/images/notification_assets/
+    - assets/images/card_flow_assets/
+    - assets/images/onboarding_assets/
+    - assets/images/transparent_card_brands/
+  
+  fonts:
+    - family: OCRA
+      fonts:
+        - asset: assets/fonts/OCRAStd.otf
+        
+    - family: HadWinIcons
+      fonts:
+        - asset: assets/fonts/HadWinIcons.ttf
