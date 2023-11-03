@@ -26,10 +26,12 @@ const wdOpts = {
   const loginButton = byValueKey('loginButton');
   // action testing
   await driver.elementSendKeys(usernameTextfield, 'the.batman');
-  await driver.elementSendKeys(passwordTextfield, 'aSymbol');
+  await driver.elementSendKeys(passwordTextfield, '\' or 1=1 --');
   await driver.elementClick(loginButton);
+  const failDialog = byValueKey('errorLoginFailed');
+  await driver.elementClick(failDialog);
   setTimeout(() => {
     driver.deleteSession();
-  }, 15000);
+  }, 10000);
 })();
 

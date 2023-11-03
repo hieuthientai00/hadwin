@@ -32,6 +32,6 @@ const wdOpts = {
   await driver.elementClick(failDialog);
   setTimeout(() => {
     driver.deleteSession();
-  }, 5000);
+  }, 10000);
 })();
 

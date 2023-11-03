@@ -45,6 +45,8 @@ const wdOpts = {
     await driver.elementSendKeys(confirmPasswordTextfield, '123qweASD');
     await driver.elementClick(registerButton);
   
-  driver.deleteSession();
+    setTimeout(() => {
+      driver.deleteSession();
+    }, 10000);
 })();
 

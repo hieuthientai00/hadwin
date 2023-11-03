@@ -35,17 +35,9 @@ const wdOpts = {
   const businessContact1 = byValueKey('businessContact1')
   
   await driver.elementClick(businessContact1);
-
-  const buttonNumber0 = byValueKey('buttonNumber0');
   const buttonNumber1 = byValueKey('buttonNumber1');
   const buttonNumber2 = byValueKey('buttonNumber2');
-  const buttonNumber3 = byValueKey('buttonNumber3');
   const buttonNumber4 = byValueKey('buttonNumber4');
-  const buttonNumber5 = byValueKey('buttonNumber5');
-  const buttonNumber6 = byValueKey('buttonNumber6');
-  const buttonNumber7 = byValueKey('buttonNumber7');
-  const buttonNumber8 = byValueKey('buttonNumber8');
-  const buttonNumber9 = byValueKey('buttonNumber9');
   const sendButton = byValueKey('Send');
 
   await driver.elementClick(buttonNumber1);
