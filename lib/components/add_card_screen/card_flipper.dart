@@ -50,7 +50,6 @@ class _CardFlipperState extends State<CardFlipper>
   void initState() {
     super.initState();
 
-
     cardFlippingController =
         AnimationController(vsync: this, duration: widget.transitionDuration);
 
@@ -81,7 +80,6 @@ class _CardFlipperState extends State<CardFlipper>
         });
         setImage();
       }
-
     });
     widget.cardFlippingController?.cardState = this;
   }
@@ -97,7 +95,6 @@ class _CardFlipperState extends State<CardFlipper>
       if (skewFactor >= 270) {
         setState(() {
           displayedCard = widget.frontSide;
-
         });
       } else {
         setState(() {
@@ -108,14 +105,12 @@ class _CardFlipperState extends State<CardFlipper>
             alignment: Alignment.center,
             child: widget.backSide,
           );
-
         });
       }
     } else {
       if (skewFactor <= 90) {
         setState(() {
           displayedCard = widget.backSide;
-
         });
       } else {
         setState(() {
@@ -126,18 +121,13 @@ class _CardFlipperState extends State<CardFlipper>
             alignment: Alignment.center,
             child: widget.frontSide,
           );
-
         });
       }
-      
     }
-   
   }
 
   Future<bool> flipCard() async {
-   
     return cardFlippingController.forward().then((value) => true);
-  
   }
 
   @override
@@ -148,7 +138,6 @@ class _CardFlipperState extends State<CardFlipper>
       displayedCard = widget.backSide;
     }
 
-
     return Transform(
       transform: Matrix4.identity()
         ..setEntry(3, 2, defaultSkew)
@@ -156,10 +145,7 @@ class _CardFlipperState extends State<CardFlipper>
       alignment: Alignment.center,
       child: displayedCard,
     );
-
   }
-
-
 }
 
 class CardFlippingController {

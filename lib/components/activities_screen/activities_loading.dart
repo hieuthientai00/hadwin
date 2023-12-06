@@ -2,14 +2,14 @@ import 'package:fade_shimmer/fade_shimmer.dart';
 import 'package:flutter/material.dart';
 
 Widget _activityloadingTile() {
-  Widget bar=Container(
-            child: FadeShimmer(
-              height: 18,
-              width: 180,
-              fadeTheme: FadeTheme.light,
-            ),
-            padding: EdgeInsets.all(5),
-          );
+  Widget bar = Container(
+    child: FadeShimmer(
+      height: 18,
+      width: 180,
+      fadeTheme: FadeTheme.light,
+    ),
+    padding: EdgeInsets.all(5),
+  );
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
@@ -21,10 +21,7 @@ Widget _activityloadingTile() {
         padding: EdgeInsets.all(5),
       ),
       Column(
-        children: [
-          bar,
-          bar
-        ],
+        children: [bar, bar],
       ),
       Column(
         children: [

@@ -51,7 +51,7 @@ class _WalletScreenState extends State<WalletScreen> {
         ),
         Positioned(
             // top: 128,
-            bottom:-60,
+            bottom: -60,
             child: CircleAvatar(
               backgroundColor: Colors.white,
               radius: 64,
@@ -184,7 +184,13 @@ class _WalletScreenState extends State<WalletScreen> {
                     "+ Add",
                     style: TextStyle(color: Color(0xff929BAB)),
                   ),
-                  onTap: goToAddCardScreen)
+                  onTap: () {
+                    Navigator.push(
+                            context, SlideRightRoute(page: AddCardScreen()))
+                        .then((value) {
+                      setState(() {});
+                    });
+                  })
             ],
           ),
         ),
@@ -193,11 +199,19 @@ class _WalletScreenState extends State<WalletScreen> {
     );
 
     return Scaffold(
-       backgroundColor: Color(0xfffdfdfd),
+        backgroundColor: Color(0xfffdfdfd),
         //  backgroundColor: Color(0xfffcfcfc),
         appBar: AppBar(
           leading: IconButton(
-              onPressed: goBackToLastTabScreen, icon: Icon(Icons.arrow_back)),
+              onPressed: () {
+                int lastTab =
+                    Provider.of<TabNavigationProvider>(context, listen: false)
+                        .lastTab;
+                Provider.of<TabNavigationProvider>(context, listen: false)
+                    .removeLastTab();
+                widget.setTab(lastTab);
+              },
+              icon: Icon(Icons.arrow_back)),
           title: Text("My Wallet"),
           centerTitle: true,
           actions: [
@@ -222,13 +236,6 @@ class _WalletScreenState extends State<WalletScreen> {
         ]));
   }
 
-  void goToAddCardScreen() =>
-      Navigator.push(context, SlideRightRoute(page: AddCardScreen()))
-          .then((value) {
-        setState(() {});
-     
-      });
-
   Widget _buildAvailableCards(
       BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
     List<dynamic> cardData = [];
@@ -243,17 +250,10 @@ class _WalletScreenState extends State<WalletScreen> {
             borderRadius: BorderRadius.all(Radius.circular(20)),
             boxShadow: <BoxShadow>[
               BoxShadow(
-                /*
-                  color: Color(0xffF5F7FA),
-                  blurRadius: 4,
-                  offset: Offset(0.0, 3),
-                  spreadRadius: 0
-                  */
                   color: Color(0xff1546a0).withOpacity(0.1),
-                                  blurRadius: 48,
-                                  offset: Offset(2, 8),
-                                  spreadRadius: -16
-                  ),
+                  blurRadius: 48,
+                  offset: Offset(2, 8),
+                  spreadRadius: -16),
             ],
             color: Colors.white,
           ),
@@ -289,8 +289,10 @@ class _WalletScreenState extends State<WalletScreen> {
                   color: Color(0xff243656),
                   fontSize: 16.5),
             ),
-            subtitle: Text(_formatCardNumber(cardData[index]['cardNumber']),
-                style: TextStyle(fontSize: 13,color: Color(0xff929BAB)),),
+            subtitle: Text(
+              _formatCardNumber(cardData[index]['cardNumber']),
+              style: TextStyle(fontSize: 13, color: Color(0xff929BAB)),
+            ),
           ),
         ),
         separatorBuilder: (_, b) => Divider(
@@ -332,32 +334,7 @@ class _WalletScreenState extends State<WalletScreen> {
     return formattedCardNumber.trim();
   }
 
-  void goBackToLastTabScreen() {
-    int lastTab =
-        Provider.of<TabNavigationProvider>(context, listen: false).lastTab;
-    Provider.of<TabNavigationProvider>(context, listen: false).removeLastTab();
-    widget.setTab(lastTab);
-  }
-
   void _deleteCardDialogBox(String cardNumber) {
-    Decoration buttonDecoration = BoxDecoration(
-      boxShadow: [
-        BoxShadow(
-            color: Colors.blueGrey.shade100,
-            offset: Offset(0, 4),
-            blurRadius: 5.0)
-      ],
-      gradient: RadialGradient(
-          colors: [Color(0xff0070BA), Color(0xff1546A0)],
-          radius: 8.4,
-          center: Alignment(-0.24, -0.36)),
-      borderRadius: BorderRadius.circular(10),
-    );
-    ButtonStyle buttonStyle = ElevatedButton.styleFrom(
-      primary: Colors.transparent,
-      shadowColor: Colors.transparent,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-    );
     showDialog(
         context: context,
         barrierDismissible: false,
@@ -383,12 +360,36 @@ class _WalletScreenState extends State<WalletScreen> {
                         Container(
                           height: 48,
                           width: 100,
-                          decoration: buttonDecoration,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.blueGrey.shade100,
+                                  offset: Offset(0, 4),
+                                  blurRadius: 5.0)
+                            ],
+                            gradient: RadialGradient(
+                                colors: [Color(0xff0070BA), Color(0xff1546A0)],
+                                radius: 8.4,
+                                center: Alignment(-0.24, -0.36)),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                           child: ElevatedButton(
-                              onPressed: () => _deleteSelectedCard(cardNumber),
+                              onPressed: () async {
+                                bool cardDeletionStatus =
+                                    await availableCards.deleteCard(cardNumber);
+                                if (cardDeletionStatus) {
+                                  setState(() {});
+                                  Navigator.of(context).pop();
+                                } else {
+                                  Navigator.of(context).pop();
+                                }
+                              },
                               child: Text('Delete'),
-                              style: buttonStyle
-                              ),
+                              style: ElevatedButton.styleFrom(
+                                shadowColor: Colors.transparent,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                              )),
                         ),
                         SizedBox(
                           width: 24,
@@ -396,13 +397,30 @@ class _WalletScreenState extends State<WalletScreen> {
                         Container(
                           height: 48,
                           width: 100,
-                          decoration: buttonDecoration,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.blueGrey.shade100,
+                                  offset: Offset(0, 4),
+                                  blurRadius: 5.0)
+                            ],
+                            gradient: RadialGradient(
+                                colors: [Color(0xff0070BA), Color(0xff1546A0)],
+                                radius: 8.4,
+                                center: Alignment(-0.24, -0.36)),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                           child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: Text('Cancel'),
-                              style: buttonStyle),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Text('Cancel'),
+                            style: ElevatedButton.styleFrom(
+                              shadowColor: Colors.transparent,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -413,15 +431,5 @@ class _WalletScreenState extends State<WalletScreen> {
                 )
               ],
             ));
-  }
-
-  Future<void> _deleteSelectedCard(String cardNumber) async {
-    bool cardDeletionStatus = await availableCards.deleteCard(cardNumber);
-    if (cardDeletionStatus) {
-      setState(() {});
-      Navigator.of(context).pop();
-    } else {
-      Navigator.of(context).pop();
-    }
   }
 }

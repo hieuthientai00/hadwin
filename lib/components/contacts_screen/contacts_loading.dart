@@ -32,7 +32,6 @@ Widget _contactLoadingTile() {
           )
         ],
       ),
-      
     ],
   );
 }

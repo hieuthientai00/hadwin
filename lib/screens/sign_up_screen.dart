@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hadwin/hadwin_components.dart';
 
-
-
-class SignUpScreen extends StatefulWidget {
+class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 
-  @override
-  _SignUpScreenState createState() => _SignUpScreenState();
-}
-
-class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -22,18 +15,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: 16,
                 ),
                 Container(
-                  child: Image.asset('assets/images/hadwin_system/hadwin-logo-with-name.png'),
+                  child: Image.asset(
+                      'assets/images/hadwin_system/hadwin-logo-with-name.png'),
                   height: 30,
                 ),
                 SizedBox(
                   height: 30,
                 ),
-               
                 SignUpSteps(),
                 SizedBox(
                   height: 27,
                 ),
-
                 Container(
                   child: Center(
                     child: InkWell(
@@ -43,7 +35,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             TextStyle(fontSize: 14, color: Color(0xFF929BAB)),
                       ),
                       onTap: () {
-                      
                         Navigator.pop(context);
                       },
                     ),
@@ -57,9 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ],
             ),
             padding: EdgeInsets.all(45),
-         
           ),
-
         ),
         onWillPop: () => Future.value(false));
   }

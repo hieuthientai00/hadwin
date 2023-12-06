@@ -57,10 +57,10 @@ class UserDeviceInfoStorage {
       final file = await _userDeviceInfoFile;
 
       await file.delete();
-     //* THE USER DEVICE INFORMATION FILE HAS BEEN DELETED
+      //* THE USER DEVICE INFORMATION FILE HAS BEEN DELETED
       return true;
     } catch (e) {
-     //* THE USER DEVICE INFORMATION FILE HAS NOT BEEN DELETED
+      //* THE USER DEVICE INFORMATION FILE HAS NOT BEEN DELETED
       return false;
     }
   }

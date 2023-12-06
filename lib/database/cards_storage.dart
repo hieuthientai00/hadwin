@@ -41,7 +41,6 @@ class CardsStorage {
               //* the cards have been saved in app memory
               return true;
             });
-         
           }
         } catch (er) {
           return false;
@@ -96,7 +95,6 @@ class CardsStorage {
         //* card has been deleted
         return true;
       });
-     
     } catch (e) {
       return false;
     }
@@ -110,7 +108,7 @@ class CardsStorage {
       //* THE LOCAL CARDS FILE HAS BEEN DELETED
       return true;
     } catch (e) {
-     //* THE LOCAL CARDS FILE HAS NOT BEEN DELETED
+      //* THE LOCAL CARDS FILE HAS NOT BEEN DELETED
       return false;
     }
   }
@@ -119,12 +117,14 @@ class CardsStorage {
     try {
       final file = await _cardsFile;
 
-      return file.writeAsString(jsonEncode({"availableCards": []})).then((value) {
+      return file
+          .writeAsString(jsonEncode({"availableCards": []}))
+          .then((value) {
         //* RESET CARDS FILE SUCCESSFUL
         return true;
       });
     } catch (e) {
-    //* RESET CARDS FILE UNSUCCESSFUL
+      //* RESET CARDS FILE UNSUCCESSFUL
       return false;
     }
   }
