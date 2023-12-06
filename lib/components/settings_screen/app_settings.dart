@@ -91,8 +91,8 @@ class AppSettingsComponent extends StatelessWidget {
       {
         'title': Text('End User License Agreement'),
         'trailing': Icon(FluentIcons.info_24_regular),
-        'onTap': () => openDocsViewer(
-            'END_USER_LICENSE_AGREEMENT', 'End User License Agreement', context),
+        'onTap': () => openDocsViewer('END_USER_LICENSE_AGREEMENT',
+            'End User License Agreement', context),
         'settingsCategory': 'About the app',
       },
       {
@@ -161,7 +161,6 @@ class AppSettingsComponent extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
     );
     ButtonStyle buttonStyle = ElevatedButton.styleFrom(
-      primary: Colors.transparent,
       shadowColor: Colors.transparent,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
     );

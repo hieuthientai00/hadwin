@@ -1,5 +1,6 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:hadwin/core/constants.dart';
 import 'package:hadwin/hadwin_components.dart';
 
 import 'package:provider/provider.dart';
@@ -42,7 +43,7 @@ class HomeDashboardScreenState extends State<HomeDashboardScreen> {
             radius: 26,
             child: ClipOval(
               child: Image.network(
-                "${ApiConstants.baseUrl}/dist/images/hadwin_images/hadwin_users/${widget.user['gender'].toLowerCase()}/${widget.user['avatar']}",
+                "${Constants.baseUrl}/dist/images/hadwin_images/hadwin_users/${widget.user['gender'].toLowerCase()}/${widget.user['avatar']}",
                 height: 48,
                 width: 48,
                 fit: BoxFit.cover,
@@ -145,9 +146,6 @@ class HomeDashboardScreenState extends State<HomeDashboardScreen> {
               ],
             ),
             style: ElevatedButton.styleFrom(
-              // primary: Color(0xFF0070BA),
-              primary: Color(0xff1546A0),
-              // fixedSize: Size(90, 100),
               fixedSize: Size(96, 108),
               shadowColor: Color(0xFF0070BA).withOpacity(0.618),
               shape: RoundedRectangleBorder(
@@ -179,9 +177,7 @@ class HomeDashboardScreenState extends State<HomeDashboardScreen> {
               )
             ]),
             style: ElevatedButton.styleFrom(
-              // fixedSize: Size(90, 100),
               fixedSize: Size(96, 108),
-              primary: Colors.white,
               shadowColor: Color(0xffF5F7FA).withOpacity(0.618),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12)),
@@ -319,7 +315,7 @@ class HomeDashboardScreenState extends State<HomeDashboardScreen> {
           itemBuilder: (BuildContext context, int index) {
             Widget transactionMemberImage = FutureBuilder<int>(
               future: checkUrlValidity(
-                  "${ApiConstants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${currentTransactions[index]['transactionMemberAvatar']}"),
+                  "${Constants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${currentTransactions[index]['transactionMemberAvatar']}"),
               builder: (context, snapshot) {
                 if (currentTransactions[index]
                         .containsKey('transactionMemberBusinessWebsite') &&
@@ -339,7 +335,7 @@ class HomeDashboardScreenState extends State<HomeDashboardScreen> {
                             BlendMode.saturation,
                           ),
                           child: Image.network(
-                            "${ApiConstants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${currentTransactions[index]['transactionMemberAvatar']}",
+                            "${Constants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${currentTransactions[index]['transactionMemberAvatar']}",
                             height: 72,
                             width: 72,
                             fit: BoxFit.contain,
@@ -358,7 +354,7 @@ class HomeDashboardScreenState extends State<HomeDashboardScreen> {
                       child: AspectRatio(
                         aspectRatio: 1.0 / 1.0,
                         child: Image.network(
-                          "${ApiConstants.baseUrl}/dist/images/hadwin_images/hadwin_users/${currentTransactions[index]['transactionMemberGender'].toLowerCase()}/${currentTransactions[index]['transactionMemberAvatar']}",
+                          "${Constants.baseUrl}/dist/images/hadwin_images/hadwin_users/${currentTransactions[index]['transactionMemberGender'].toLowerCase()}/${currentTransactions[index]['transactionMemberAvatar']}",
                           height: 72,
                           width: 72,
                           fit: BoxFit.contain,
@@ -370,7 +366,7 @@ class HomeDashboardScreenState extends State<HomeDashboardScreen> {
                       child: AspectRatio(
                         aspectRatio: 1.0 / 1.0,
                         child: Image.network(
-                          "${ApiConstants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${currentTransactions[index]['transactionMemberAvatar']}",
+                          "${Constants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${currentTransactions[index]['transactionMemberAvatar']}",
                           height: 72,
                           width: 72,
                           fit: BoxFit.contain,

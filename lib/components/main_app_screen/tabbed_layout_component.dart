@@ -30,7 +30,6 @@ class TabbedLayoutComponent extends StatefulWidget {
 }
 
 class _TabbedLayoutComponentState extends State<TabbedLayoutComponent> {
-
   Timer? _updateTransactionsTimer;
   int _currentTab = 0;
   int totalTransactionRequests = 0;
@@ -49,9 +48,7 @@ class _TabbedLayoutComponentState extends State<TabbedLayoutComponent> {
         Duration(minutes: [1, 2, 3, 4][Random().nextInt(4)]), (Timer t) {
       Provider.of<LiveTransactionsProvider>(context, listen: false)
           .updateTransactionRequests();
-     
     });
-  
   }
 
   @override
@@ -97,9 +94,8 @@ class _TabbedLayoutComponentState extends State<TabbedLayoutComponent> {
     return WillPopScope(
       onWillPop: _onBackPress,
       child: Scaffold(
-     
         // backgroundColor: Colors.white,
-         backgroundColor: Color(0xfffefefe),
+        backgroundColor: Color(0xfffefefe),
 
         extendBodyBehindAppBar: true,
 
@@ -127,7 +123,6 @@ class _TabbedLayoutComponentState extends State<TabbedLayoutComponent> {
     }
 
     return Container(
-    
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 6.18, vertical: 1),
         child: GNav(
@@ -168,11 +163,9 @@ class _TabbedLayoutComponentState extends State<TabbedLayoutComponent> {
                       right: 0,
                       child: ClipOval(
                         child: Container(
-                          
                             color: Color(0xffffb3c1),
                             width: 17,
                             height: 17,
-                         
                             child: Center(
                               child: Text(unreadTransactions.toString(),
                                   textAlign: TextAlign.center,
@@ -180,7 +173,6 @@ class _TabbedLayoutComponentState extends State<TabbedLayoutComponent> {
                                       fontSize: 9.6,
                                       fontWeight: FontWeight.bold,
                                       color: Color(0xffc9184a),
-                               
                                       backgroundColor: Color(0xffffb3c1))),
                             )),
                       ),
@@ -190,9 +182,7 @@ class _TabbedLayoutComponentState extends State<TabbedLayoutComponent> {
             ),
             GButton(
               icon: HadWinIcons.line_awesome_wallet_solid,
-            
               text: 'Wallet',
-            
               iconSize: 34,
             ),
           ],
@@ -200,7 +190,6 @@ class _TabbedLayoutComponentState extends State<TabbedLayoutComponent> {
           onTabChange: _onTabChange,
         ),
       ),
-     
     );
   }
 

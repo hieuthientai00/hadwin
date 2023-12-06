@@ -1,0 +1,19 @@
+{
+  "transactionReceipt": {
+    "transactionAmount": 55,
+    "transactionDate": "2023-12-06 21:48:23.615534",
+    "transactionID": "39cd10e9-e8d1-47dc-81e7-631c9a46db92",
+    "transactionInitiatorBankName": "CHASE",
+    "transactionInitiatorEmail": "dark.knight@wayneenterprises.com",
+    "transactionInitiatorName": "Bruce Wayne",
+    "transactionInitiatorPhoneNumber": "888-766-8686",
+    "transactionInitiatorUid": "b2ed0b98-a6d7-4fe5-b8be-e8ff971218e7",
+    "transactionInitiatorWalletAddress": "189VSAfPdmAULvTyN4EiGjoker31gGQgUFSeirousSoWhy",
+    "transactionMemberAvatar": "adidas-optimized-logo.png",
+    "transactionMemberBusinessWebsite": "adidas.com",
+    "transactionMemberName": "Adidas",
+    "transactionMemberWalletAddress": "myASTnfMV5Zh2t75gH7ap8JpJpm9QaEAsb",
+    "transactionType": "debit"
+  },
+  "transactionStatus": "successful"
+}

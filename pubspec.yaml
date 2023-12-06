@@ -1,12 +1,12 @@
 name: hadwin
 description: A new Flutter project.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.1.0 <4.0.0'
+  sdk: ">=3.1.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -31,6 +31,7 @@ dependencies:
   google_nav_bar: ^5.0.6
   path_provider: ^2.1.1
   markdown_widget: ^2.2.0
+  flutter_cache_manager: ^3.3.1
 
 dev_dependencies:
   flutter_test:
@@ -58,7 +59,6 @@ flutter_icons:
   flutter_lints: ^1.0.4
 
 flutter:
-
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
@@ -69,12 +69,12 @@ flutter:
     - assets/images/card_flow_assets/
     - assets/images/onboarding_assets/
     - assets/images/transparent_card_brands/
-  
+
   fonts:
     - family: OCRA
       fonts:
         - asset: assets/fonts/OCRAStd.otf
-        
+
     - family: HadWinIcons
       fonts:
         - asset: assets/fonts/HadWinIcons.ttf

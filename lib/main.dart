@@ -22,7 +22,7 @@ import 'package:flutter_driver/driver_extension.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  enableFlutterDriverExtension();
+  // enableFlutterDriverExtension();
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(MultiProvider(

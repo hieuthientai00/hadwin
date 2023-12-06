@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:hadwin/core/constants.dart';
 import 'package:hadwin/hadwin_components.dart';
 
 import 'package:provider/provider.dart';
@@ -229,7 +230,7 @@ class _AvailableBusinessesAndContactsScreenState
                                             BlendMode.saturation,
                                           ),
                                           child: Image.network(
-                                            "${ApiConstants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${data[index]['avatar']}",
+                                            "${Constants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${data[index]['avatar']}",
                                             height: 72,
                                             width: 72,
                                             fit: BoxFit.contain,
@@ -245,7 +246,7 @@ class _AvailableBusinessesAndContactsScreenState
                                     child: AspectRatio(
                                       aspectRatio: 1.0 / 1.0,
                                       child: Image.network(
-                                        "${ApiConstants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${data[index]['avatar']}",
+                                        "${Constants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${data[index]['avatar']}",
                                         height: 72,
                                         width: 72,
                                         fit: BoxFit.contain,
@@ -311,10 +312,13 @@ class _AvailableBusinessesAndContactsScreenState
                                               color: Color(0xff929BAB)),
                                         )),
                                     onTap: () {
+                                      debugPrint(
+                                          'BussinessContact: businessContact$index');
                                       Navigator.push(
                                         context,
                                         SlideRightRoute(
                                           page: FundTransferScreen(
+                                            index: index,
                                             otherParty: data[index],
                                             transactionType:
                                                 widget.transactionType,

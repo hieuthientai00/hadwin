@@ -1,0 +1,19 @@
+{
+  "transactionReceipt": {
+    "transactionAmount": 58,
+    "transactionDate": "2023-12-06 21:48:13.985083",
+    "transactionID": "16f07616-e0c3-4a58-80af-15cd9a27323b",
+    "transactionInitiatorBankName": "CHASE",
+    "transactionInitiatorEmail": "dark.knight@wayneenterprises.com",
+    "transactionInitiatorName": "Bruce Wayne",
+    "transactionInitiatorPhoneNumber": "888-766-8686",
+    "transactionInitiatorUid": "b2ed0b98-a6d7-4fe5-b8be-e8ff971218e7",
+    "transactionInitiatorWalletAddress": "189VSAfPdmAULvTyN4EiGjoker31gGQgUFSeirousSoWhy",
+    "transactionMemberAvatar": "all-day-baby-optimized-logo.png",
+    "transactionMemberBusinessWebsite": "alldaybabyla.com",
+    "transactionMemberName": "All Day Baby LA",
+    "transactionMemberWalletAddress": "myASTnfMV5Zh2t75gH7ap8JpJpm9QaEAsb",
+    "transactionType": "debit"
+  },
+  "transactionStatus": "failed"
+}

@@ -3,16 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:hadwin/components/fund_transfer_screen/transaction_processing_screen.dart';
+import 'package:hadwin/core/constants.dart';
 import 'package:hadwin/database/user_data_storage.dart';
 import 'package:hadwin/hadwin_components.dart';
 
 class FundTransferScreen extends StatefulWidget {
   final Map<String, dynamic> otherParty;
   final String transactionType;
+  final int index;
 
-  const FundTransferScreen(
-      {Key? key, required this.otherParty, required this.transactionType})
-      : super(key: key);
+  const FundTransferScreen({
+    Key? key,
+    required this.otherParty,
+    required this.transactionType,
+    required this.index,
+  }) : super(key: key);
 
   @override
   _FundTransferScreenState createState() => _FundTransferScreenState();
@@ -61,7 +66,6 @@ class _FundTransferScreenState extends State<FundTransferScreen> {
               fontWeight: FontWeight.w700),
         ),
         style: ElevatedButton.styleFrom(
-          primary: Colors.white,
           shape: CircleBorder(),
           // elevation: 0.618,
           elevation: 0,
@@ -83,7 +87,6 @@ class _FundTransferScreenState extends State<FundTransferScreen> {
           ),
         ),
         style: ElevatedButton.styleFrom(
-            primary: Colors.white,
             shape: CircleBorder(),
             // elevation: .618,
             // shadowColor: Color(0xffF5F7FA)
@@ -148,7 +151,7 @@ class _FundTransferScreenState extends State<FundTransferScreen> {
                   backgroundColor: Color(0xffF5F7FA),
                   child: FutureBuilder<int>(
                     future: checkUrlValidity(
-                        "${ApiConstants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${widget.otherParty['avatar']}"),
+                        "${Constants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${widget.otherParty['avatar']}"),
                     builder: (context, snapshot) {
                       Widget contactImage;
                       if (widget.otherParty.containsKey('emailAddress') &&
@@ -159,7 +162,7 @@ class _FundTransferScreenState extends State<FundTransferScreen> {
                             child: AspectRatio(
                               aspectRatio: 1.0 / 1.0,
                               child: Image.network(
-                                "${ApiConstants.baseUrl}/dist/images/hadwin_images/hadwin_users/${widget.otherParty['gender'].toLowerCase()}/${widget.otherParty['avatar']}",
+                                "${Constants.baseUrl}/dist/images/hadwin_images/hadwin_users/${widget.otherParty['gender'].toLowerCase()}/${widget.otherParty['avatar']}",
                                 height: 72,
                                 width: 72,
                                 fit: BoxFit.contain,
@@ -171,7 +174,7 @@ class _FundTransferScreenState extends State<FundTransferScreen> {
                             child: AspectRatio(
                               aspectRatio: 1.0 / 1.0,
                               child: Image.network(
-                                "${ApiConstants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${widget.otherParty['avatar']}",
+                                "${Constants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${widget.otherParty['avatar']}",
                                 height: 72,
                                 width: 72,
                                 fit: BoxFit.contain,
@@ -195,7 +198,7 @@ class _FundTransferScreenState extends State<FundTransferScreen> {
                                   BlendMode.saturation,
                                 ),
                                 child: Image.network(
-                                  "${ApiConstants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${widget.otherParty['avatar']}",
+                                  "${Constants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${widget.otherParty['avatar']}",
                                   height: 72,
                                   width: 72,
                                   fit: BoxFit.contain,
@@ -491,6 +494,7 @@ class _FundTransferScreenState extends State<FundTransferScreen> {
   }
 
   Future<void> _makeTransaction() async {
+    debugPrint('Making transaction !!!');
     transactionReceipt['transactionAmount'] =
         double.parse(_transactionAmountController.text).toStringAsFixed(2);
     if (int.parse(transactionReceipt['transactionAmount'].split('.')[1]) == 0) {
@@ -503,6 +507,7 @@ class _FundTransferScreenState extends State<FundTransferScreen> {
       SlideRightRoute(
         page: TransactionProcessingScreen(
           transactionReceipt: transactionReceipt,
+          index: widget.index,
         ),
       ),
     );

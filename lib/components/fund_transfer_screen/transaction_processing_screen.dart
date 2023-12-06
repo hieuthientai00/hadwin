@@ -12,9 +12,12 @@ import 'package:provider/provider.dart';
 
 class TransactionProcessingScreen extends StatefulWidget {
   final Map<String, dynamic> transactionReceipt;
-  const TransactionProcessingScreen(
-      {Key? key, required this.transactionReceipt})
-      : super(key: key);
+  final int index;
+  const TransactionProcessingScreen({
+    Key? key,
+    required this.transactionReceipt,
+    required this.index,
+  }) : super(key: key);
 
   @override
   _TransactionProcessingScreenState createState() =>
@@ -45,8 +48,10 @@ class _TransactionProcessingScreenState
     );
     double transactionAmount =
         double.parse(widget.transactionReceipt['transactionAmount']);
+    debugPrint('To start transaction');
     if (transactionAmount <= 0) {
       //? TRANSACTION FAILS DUE TO INVALID AMOUNT
+      debugPrint('Failed : amount <= 0');
       setState(() {
         error = 'none';
         _transactionStatusAnimation = {
@@ -61,7 +66,7 @@ class _TransactionProcessingScreenState
           transactionAmount >
               double.parse(
                   context.read<UserLoginStateProvider>().bankBalance)) {
-        //? IN CASE TRANSACTION FAILS
+        debugPrint('Failed : amount > bankBalance');
         setState(() {
           error = 'none';
           _transactionStatusAnimation = {
@@ -73,6 +78,7 @@ class _TransactionProcessingScreenState
           _exitScreen = true;
         });
       } else {
+        debugPrint('Transactinggggg');
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           executeTransaction();
         });
@@ -108,16 +114,24 @@ class _TransactionProcessingScreenState
           'transactionReceipt': widget.transactionReceipt,
         },
         authKey: userAuthKey);
-
+    if (widget.index % 2 == 0) {
+      debugPrint('INDEX: ${widget.index}');
+      responseForTransaction['transactionStatus'] = 'successful';
+    } else {
+      responseForTransaction['transactionStatus'] = 'failed';
+    }
+    debugPrint('Transaction: $responseForTransaction');
     if (responseForTransaction.keys.join().toLowerCase().contains("error")) {
+      debugPrint('Have an error');
       setState(() {
         error = responseForTransaction;
       });
     } else {
+      debugPrint('Check transactionStatus');
       setState(() {
         error = 'none';
       });
-      if (responseForTransaction['transactionStatus'] == "successful") {
+      if (responseForTransaction['transactionStatus'] == 'successful') {
         if (responseForTransaction['transactionReceipt']['transactionType'] ==
             'debit') {
           //? FOR ---SUCCESSFUL--- PAYMENT
@@ -208,7 +222,6 @@ class _TransactionProcessingScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Color(0xffedf2f4),
       backgroundColor: Color(0xfffcfcfc),
       appBar: AppBar(
         title: Text(

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:hadwin/core/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:hadwin/hadwin_components.dart';
 
@@ -168,7 +169,6 @@ class _AllContactsScreenState extends State<AllContactsScreen> {
                               child: Text('Pay'),
                               style: ElevatedButton.styleFrom(
                                 shadowColor: Colors.transparent,
-                                primary: Colors.transparent,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10)),
                               )),
@@ -191,7 +191,6 @@ class _AllContactsScreenState extends State<AllContactsScreen> {
                               child: Text('Request'),
                               style: ElevatedButton.styleFrom(
                                 shadowColor: Colors.transparent,
-                                primary: Colors.transparent,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10)),
                               )),
@@ -228,6 +227,7 @@ class _AllContactsScreenState extends State<AllContactsScreen> {
             page: FundTransferScreen(
           otherParty: otherParty,
           transactionType: transactionType,
+          index: 0,
         )));
   }
 
@@ -285,7 +285,7 @@ class _AllContactsScreenState extends State<AllContactsScreen> {
                       child: AspectRatio(
                         aspectRatio: 1.0 / 1.0,
                         child: Image.network(
-                          "${ApiConstants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${data[index]['avatar']}",
+                          "${Constants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${data[index]['avatar']}",
                           height: 68,
                           width: 68,
                           fit: BoxFit.contain,

@@ -1,10 +1,7 @@
 library hadwin_components;
 
-export 'resources/api_constants.dart';
-
 //business logic
 export 'providers/user_login_state_provider.dart';
-
 
 //components
 export 'components/wallet_screen/add_card_screen.dart';
@@ -17,16 +14,12 @@ export 'components/sign_up_screen/sign_up_steps.dart';
 export 'components/settings_screen/app_settings.dart';
 export 'components/login_screen/form_component.dart';
 
-
-
 //database
 export 'database/cards_storage.dart';
 export 'database/successful_transactions_storage.dart';
 
-
 //resources
 export 'providers/tab_navigation_provider.dart';
-
 
 //screens
 export 'screens/new_settings_screen.dart';

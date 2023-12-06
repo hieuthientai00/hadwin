@@ -135,29 +135,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             PageData page = pages[index];
             return Column(children: [
               Container(
-                child: Theme(
-                  data: ThemeData(
-                    textTheme: TextTheme(
-                      headline6: TextStyle(
-                          color: page.textColor,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Helvetica',
-                          letterSpacing: 0.0,
-                          fontSize: 15),
-                      subtitle2: TextStyle(
-                        color: page.textColor,
-                        fontWeight: FontWeight.w300,
-                        fontSize: 18,
-                      ),
-                      bodyText2: GoogleFonts.poppins(
-                        color: page.textColor,
-                        letterSpacing: 0.0,
-                        fontSize: 15,
-                      ),
-                    ),
-                  ),
-                  child: PageCard(page: page),
-                ),
+                child: PageCard(page: page),
               ),
             ]);
           },
@@ -200,7 +178,7 @@ class PageCard extends StatelessWidget {
       ),
       child: Text(
         page.title!,
-        style: Theme.of(context).textTheme.bodyText2,
+        style: Theme.of(context).textTheme.bodyMedium,
         textAlign: TextAlign.left,
       ),
     );

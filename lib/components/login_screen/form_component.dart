@@ -39,6 +39,7 @@ class LoginFormComponentState extends State<LoginFormComponent> {
   Future<bool> _saveLoggedInUserData(
       String loggedInUserAuthKey, Map<String, dynamic> user) async {
     try {
+      debugPrint('AUTH TOKEN: $loggedInUserAuthKey');
       final userIsSaved = await Future.wait([
         UserDataStorage().saveUserData(user),
         loginInfoStorage.setPersistentLoginData(
@@ -63,9 +64,13 @@ class LoginFormComponentState extends State<LoginFormComponent> {
   }
 
   void tryLoggingIn() async {
+    debugPrint('USERNAME: $userInput');
+    debugPrint('PASSWORD: $password');
     final dataReceived = await sendData(
-        urlPath: "/hadwin/v3/user/login",
-        data: {"userInput": userInput, "password": password});
+      urlPath: "/hadwin/v3/user/login",
+      data: {"userInput": userInput, "password": password},
+    );
+    debugPrint(dataReceived.toString());
     if (dataReceived.keys.join().toLowerCase().contains("error")) {
       showErrorAlert(context, dataReceived);
     } else {
@@ -257,7 +262,6 @@ class LoginFormComponentState extends State<LoginFormComponent> {
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
               style: ElevatedButton.styleFrom(
-                primary: Colors.transparent,
                 shadowColor: Colors.transparent,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),

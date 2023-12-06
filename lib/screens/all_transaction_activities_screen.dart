@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
 
 import 'package:hadwin/components/fund_transfer_screen/transaction_receipt_screen.dart';
+import 'package:hadwin/core/constants.dart';
 
 import 'package:provider/provider.dart';
 import 'package:hadwin/hadwin_components.dart';
@@ -309,7 +310,7 @@ class AllTransactionActivitiesState extends State<AllTransactionActivities> {
                       itemBuilder: (context, transaction) {
                         Widget transactionMemberImage = FutureBuilder<int>(
                           future: checkUrlValidity(
-                              "${ApiConstants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${transaction['transactionMemberAvatar']}"),
+                              "${Constants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${transaction['transactionMemberAvatar']}"),
                           builder: (context, snapshot) {
                             if (transaction.containsKey(
                                     'transactionMemberBusinessWebsite') &&
@@ -329,7 +330,7 @@ class AllTransactionActivitiesState extends State<AllTransactionActivities> {
                                         BlendMode.saturation,
                                       ),
                                       child: Image.network(
-                                        "${ApiConstants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${transaction['transactionMemberAvatar']}",
+                                        "${Constants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${transaction['transactionMemberAvatar']}",
                                         height: 72,
                                         width: 72,
                                         fit: BoxFit.contain,
@@ -348,7 +349,7 @@ class AllTransactionActivitiesState extends State<AllTransactionActivities> {
                                   child: AspectRatio(
                                     aspectRatio: 1.0 / 1.0,
                                     child: Image.network(
-                                      "${ApiConstants.baseUrl}/dist/images/hadwin_images/hadwin_users/${transaction['transactionMemberGender'].toLowerCase()}/${transaction['transactionMemberAvatar']}",
+                                      "${Constants.baseUrl}/dist/images/hadwin_images/hadwin_users/${transaction['transactionMemberGender'].toLowerCase()}/${transaction['transactionMemberAvatar']}",
                                       height: 72,
                                       width: 72,
                                       fit: BoxFit.contain,
@@ -360,7 +361,7 @@ class AllTransactionActivitiesState extends State<AllTransactionActivities> {
                                   child: AspectRatio(
                                     aspectRatio: 1.0 / 1.0,
                                     child: Image.network(
-                                      "${ApiConstants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${transaction['transactionMemberAvatar']}",
+                                      "${Constants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${transaction['transactionMemberAvatar']}",
                                       height: 72,
                                       width: 72,
                                       fit: BoxFit.contain,

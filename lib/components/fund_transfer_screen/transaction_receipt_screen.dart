@@ -2,6 +2,7 @@ import 'package:dotted_line/dotted_line.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hadwin/core/constants.dart';
 import 'package:hadwin/providers/live_transactions_provider.dart';
 
 import 'package:provider/provider.dart';
@@ -34,7 +35,7 @@ class TransactionReceiptScreen extends StatelessWidget {
 
     Widget transactionMemberImage = FutureBuilder<int>(
       future: checkUrlValidity(
-          "${ApiConstants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${transactionReceipt['transactionMemberAvatar']}"),
+          "${Constants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${transactionReceipt['transactionMemberAvatar']}"),
       builder: (context, snapshot) {
         if (transactionReceipt
                 .containsKey('transactionMemberBusinessWebsite') &&
@@ -53,7 +54,7 @@ class TransactionReceiptScreen extends StatelessWidget {
                     BlendMode.saturation,
                   ),
                   child: Image.network(
-                    "${ApiConstants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${transactionReceipt['transactionMemberAvatar']}",
+                    "${Constants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${transactionReceipt['transactionMemberAvatar']}",
                     height: 56,
                     width: 56,
                     fit: BoxFit.contain,
@@ -70,7 +71,7 @@ class TransactionReceiptScreen extends StatelessWidget {
               child: AspectRatio(
                 aspectRatio: 1.0 / 1.0,
                 child: Image.network(
-                  "${ApiConstants.baseUrl}/dist/images/hadwin_images/hadwin_users/${transactionReceipt['transactionMemberGender'].toLowerCase()}/${transactionReceipt['transactionMemberAvatar']}",
+                  "${Constants.baseUrl}/dist/images/hadwin_images/hadwin_users/${transactionReceipt['transactionMemberGender'].toLowerCase()}/${transactionReceipt['transactionMemberAvatar']}",
                   height: 56,
                   width: 56,
                   fit: BoxFit.contain,
@@ -82,7 +83,7 @@ class TransactionReceiptScreen extends StatelessWidget {
               child: AspectRatio(
                 aspectRatio: 1.0 / 1.0,
                 child: Image.network(
-                  "${ApiConstants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${transactionReceipt['transactionMemberAvatar']}",
+                  "${Constants.baseUrl}/dist/images/hadwin_images/brands_and_businesses/${transactionReceipt['transactionMemberAvatar']}",
                   height: 56,
                   width: 56,
                   fit: BoxFit.contain,
@@ -440,7 +441,7 @@ class TransactionReceiptScreen extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(left: 8.4),
             child: Image.network(
-              "${ApiConstants.baseUrl}/dist/images/hadwin_images/hadwin_payment_system/square_card_brands/${cardUsedInTransaction['cardBrand'].replaceAll(' ', '-').toLowerCase()}.png",
+              "${Constants.baseUrl}/dist/images/hadwin_images/hadwin_payment_system/square_card_brands/${cardUsedInTransaction['cardBrand'].replaceAll(' ', '-').toLowerCase()}.png",
               height: 72,
               width: 72,
             ),
