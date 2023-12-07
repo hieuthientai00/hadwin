@@ -36,7 +36,7 @@ const wdOpts = {
   const sendMoney = byValueKey("sendMoneyButton");
   setTimeout(() => {}, 1000);
   await driver.elementClick(sendMoney);
-  const businessContact0 = byValueKey("businessContact0");
+  const businessContact0 = byValueKey("businessContact1");
   setTimeout(() => {}, 1000);
   await driver.elementClick(businessContact0);
   const buttonNumber1 = byValueKey("buttonNumber1");
@@ -50,13 +50,12 @@ const wdOpts = {
   setTimeout(() => {}, 1000);
   await driver.elementClick(buttonNumber4);
   setTimeout(() => {}, 1000);
+  await driver.elementClick(buttonNumber4);
+  setTimeout(() => {}, 1000);
+  await driver.elementClick(buttonNumber4);
+  setTimeout(() => {}, 1000);
 
   await driver.elementClick(sendButton);
-
-  const transactionReceipt = byValueKey("transactionReceipt");
-
-  await driver.elementClick(transactionReceipt);
-  setTimeout(() => {}, 1000);
 
   setTimeout(() => {
     driver.deleteSession();
