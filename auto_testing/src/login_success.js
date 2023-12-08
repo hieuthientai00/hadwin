@@ -3,7 +3,7 @@ const { byValueKey } = require("appium-flutter-finder");
 
 // Application setting
 const wdOpts = {
-  hostname: "127.0.0.1",
+  hostname: "0.0.0.0",
   port: 4723,
   logLevel: "info",
   capabilities: {
